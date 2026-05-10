@@ -24,7 +24,7 @@ int main(void)
     PixelColor_t color = {
 //         ®  /* FIX: was 1 (nearly zero after scale)  */
      };
-
+//
      memset(pwm_data, 0, NUMBER_OF_DATA_BYTES * sizeof(uint16_t));
      mbi_set_led(24, color);
      mbi_update();
