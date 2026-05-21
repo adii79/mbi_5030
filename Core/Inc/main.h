@@ -57,6 +57,12 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define MBI_DCLK_Pin GPIO_PIN_10
+#define MBI_DCLK_GPIO_Port GPIOC
+#define MBI_LE_Pin GPIO_PIN_11
+#define MBI_LE_GPIO_Port GPIOC
+#define MBI_SDI_Pin GPIO_PIN_0
+#define MBI_SDI_GPIO_Port GPIOD
 
 /* USER CODE BEGIN Private defines */
 

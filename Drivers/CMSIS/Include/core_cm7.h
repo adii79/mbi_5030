@@ -2130,7 +2130,7 @@ __STATIC_INLINE void NVIC_DecodePriority (uint32_t Priority, uint32_t PriorityGr
   \brief   Set Interrupt Vector
   \details Sets an interrupt vector in SRAM based interrupt vector table.
            The interrupt number can be positive to specify a device specific interrupt,
-           or negative to specify a procfessor exception.
+           or negative to specify a processor exception.
            VTOR must been relocated to SRAM before.
   \param [in]   IRQn      Interrupt number
   \param [in]   vector    Address of interrupt handler function

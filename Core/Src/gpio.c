@@ -1,40 +1,76 @@
-/* gpio.c
- *
- * MBI5030 GPIO map:
- *
- *   PC10  --> MBI_DCLK (data clock)
- *   PC11  --> MBI_LE   (latch enable)
- *   PC12  --> MBI_GCLK (PWM via TIM15_CH1, AF, configured in tim.c)
- *   PD0   --> MBI_SDI  (serial data in)
- */
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * @file    gpio.c
+  * @brief   This file provides code for the configuration
+  *          of all used GPIO pins.
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2026 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
+/* Includes ------------------------------------------------------------------*/
 #include "gpio.h"
-#include "mbi_prog.h"
 
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
+
+/*----------------------------------------------------------------------------*/
+/* Configure GPIO                                                             */
+/*----------------------------------------------------------------------------*/
+/* USER CODE BEGIN 1 */
+
+/* USER CODE END 1 */
+
+/** Configure pins as
+        * Analog
+        * Input
+        * Output
+        * EVENT_OUT
+        * EXTI
+*/
 void MX_GPIO_Init(void)
 {
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    /* Enable clocks */
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    /* Set outputs LOW before enabling */
-    HAL_GPIO_WritePin(MBI_DCLK_GPIO_Port, MBI_DCLK_Pin, GPIO_PIN_RESET);  /* PC10 DCLK */
-    HAL_GPIO_WritePin(MBI_LE_GPIO_Port,   MBI_LE_Pin,   GPIO_PIN_RESET);  /* PC11 LE   */
-    HAL_GPIO_WritePin(MBI_SDI_GPIO_Port,  MBI_SDI_Pin,  GPIO_PIN_RESET);  /* PD0  SDI  */
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
-    /* PC10 = MBI_DCLK, PC11 = MBI_LE  (PC12 is AF for TIM15, done in tim.c) */
-    GPIO_InitStruct.Pin   = MBI_DCLK_Pin | MBI_LE_Pin;
-    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull  = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, MBI_DCLK_Pin|MBI_LE_Pin, GPIO_PIN_RESET);
 
-    /* PD0 = MBI_SDI */
-    GPIO_InitStruct.Pin   = MBI_SDI_Pin;
-    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Pull  = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-    HAL_GPIO_Init(MBI_SDI_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(MBI_SDI_GPIO_Port, MBI_SDI_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : MBI_DCLK_Pin MBI_LE_Pin */
+  GPIO_InitStruct.Pin = MBI_DCLK_Pin|MBI_LE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : MBI_SDI_Pin */
+  GPIO_InitStruct.Pin = MBI_SDI_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  HAL_GPIO_Init(MBI_SDI_GPIO_Port, &GPIO_InitStruct);
+
 }
+
+/* USER CODE BEGIN 2 */
+
+/* USER CODE END 2 */
