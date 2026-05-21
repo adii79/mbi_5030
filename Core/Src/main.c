@@ -21,13 +21,13 @@ int main(void)
     mbi_reset_leds();   /* clear all to black */
 
 
-    PixelColor_t color = {
-//         ®  /* FIX: was 1 (nearly zero after scale)  */
-     };
-//
-     memset(pwm_data, 0, NUMBER_OF_DATA_BYTES * sizeof(uint16_t));
-     mbi_set_led(24, color);
-     mbi_update();
+//    PixelColor_t color = {
+////         ®  /* FIX: was 1 (nearly zero after scale)  */
+//     };
+////
+//     memset(pwm_data, 0, NUMBER_OF_DATA_BYTES * sizeof(uint16_t));
+//     mbi_set_led(24, color);
+//     mbi_update();
 
     /* 6 colors: R G B Y C M */
 //    PixelColor_t colors[6] = {
@@ -40,22 +40,22 @@ int main(void)
 //        {0xFFFF, 0xFFFF, 0,      0xFFFF, 0, 0, 0, 0}, /* MAGENTA */
 //    };
 //
-//    PixelColor_t color = {
-//    		.A1 = 0,
-//			.A2 = 0,
-//			.G1 = 0,
-//			.L1 = 1,
-//			.L2 = 1,
-//			.R1 = 0xFFFF,
-//			.R2 = 0xFFFF,
-//
-//    };
-//    memset(pwm_data, 0, NUMBER_OF_DATA_BYTES * sizeof(uint16_t));
-//    mbi_set_led(1, color);
-//    mbi_update();
+    PixelColor_t color = {
+    		.A1 = 0,
+			.A2 = 0,
+			.G1 = 0,
+			.L1 = 1,
+			.L2 = 1,
+			.R1 = 0xFFFF,
+			.R2 = 0xFFFF,
+
+    };
+    memset(pwm_data, 0, NUMBER_OF_DATA_BYTES * sizeof(uint16_t));
+    mbi_set_led(23, color);
+    mbi_update();
 
 
-    int idx = 0;
+    int idx = 24;
 
     while (1)
     {
