@@ -101,7 +101,7 @@ int main(void)
 //      .R1 = 0xFFFF,
 //      .R2 = 0xFFFF,
 //      .G1 = 0xFFFF,
-//      .B1 = 0xFFFF,
+      .B1 = 0xFFFF,
 //      .A1 = 0xFFFF,
 //      .A2 = 0xFFFF,
 //      .L1 = 0xFFFF,
